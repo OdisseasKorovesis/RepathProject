@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class UtilsTest {
 
-    @Ignore
+
     @Test
     public void getExceptionStackTrace_Success() {
 
@@ -19,9 +19,11 @@ public class UtilsTest {
             ACTUAL = Utils.getExceptionStackTrace(ex);
         }
 
+        ACTUAL = ACTUAL.replaceAll(System.lineSeparator(), "\n");
+
         System.out.println(ACTUAL);
         String EXPECTED = "java.lang.Exception: This is an exception\n" +
-                "\tat com.odkor.repathproject.utils.UtilsTest.getExceptionStackTrace_Success(UtilsTest.java:15)\n" +
+                "\tat com.odkor.repathproject.utils.UtilsTest.getExceptionStackTrace_Success(UtilsTest.java:17)\n" +
                 "\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n" +
                 "\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n" +
                 "\tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n" +
