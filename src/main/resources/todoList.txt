@@ -1,0 +1,2 @@
+-add exception logging in try catch clauses
+-check update
