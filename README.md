@@ -30,6 +30,4 @@ can be immediately accessed.
 
 ## Authors
 
-Contributors names and contact info
-
 ex. [Odisseas Korovesis-Danon](https://www.linkedin.com/in/odisseas-korovesis-danon/)

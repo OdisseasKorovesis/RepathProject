@@ -2,15 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My Repath Project</title>
+    <title>My Repath Project Instructions</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 </head>
 <body>
-    <h1>My repath project</h1>
-    <button id="allUsersButton">Get All Users</button>
-
-    <p id="jsonGoesHere"></p>
-
-    <script src="/main/resources/static/index.js"></script>
+<h1 id="my-repath-project">My Repath Project</h1>
+<p>Simple Spring Java 8 Application developed at request of Repath.</p>
+<h2 id="description">Description</h2>
+<p>Spring Boot (2.4.2) REST application with the purpose of performing CRUD operations on a User Entity.<br>Uses an H2 in-memory database to store data. Testing was done utilizing Junit4 as well as Mockito.</p>
+<h2 id="getting-started">Getting Started</h2>
+<h3 id="installing">Installing</h3>
+<ul>
+    <li>Clone this github repository to any PC.</li>
+    <li>Open cloned project with any Java-compatible IDE.</li>
+</ul>
+<h3 id="executing-program">Executing program</h3>
+<ul>
+    <li>Run main method of application through RepathprojectApplication class.</li>
+    <li>Navigate to repathproject/postman-collection/RepathProject.postman_collection.json and add<br>this postman request collection to your Postman.</li>
+    <li>Note that some test data are automatically loaded to the configured database at application startup and<br>can be immediately accessed.</li>
+    <li>Execute GetAllUsers request to access endpoint responsible for retrieving all users.</li>
+    <li>Execute GetUserByCompany request to access endpoint responsible for retrieving all users based on company.</li>
+    <li>Execute SaveUser request to access endpoint responsible for saving a new user to the database.</li>
+    <li>Execute DeleteUser request to access endpoint responsible for deleting a user from the database.</li>
+    <li>Execute UpdateUser request to access endpoint responsible for updating a user in the database.</li>
+    <li>Feel free to issue any additional requests to create, read, update or delete users.</li>
+</ul>
+<h2 id="authors">Authors</h2>
+<p>ex. <a href="https://www.linkedin.com/in/odisseas-korovesis-danon/">Odisseas Korovesis-Danon</a></p>
 </body>
 </html>
