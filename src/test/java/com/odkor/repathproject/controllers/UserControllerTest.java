@@ -44,7 +44,7 @@ public class UserControllerTest {
 
         User user = new User();
         user.setName("TestUser");
-        user.setEmail("testmailgmail.com");
+        user.setEmail("testmail@gmail.com");
         user.setCompanyId(company);
 
         List<User> allUsers = new ArrayList<>();
@@ -89,7 +89,7 @@ public class UserControllerTest {
 
         User user = new User();
         user.setName("TestUser");
-        user.setEmail("testmailgmail.com");
+        user.setEmail("testmail@gmail.com");
         user.setCompanyId(company);
 
         given(userService.findUserById(1L)).willReturn(user);
@@ -114,7 +114,7 @@ public class UserControllerTest {
 
         User user = new User();
         user.setName("TestUser");
-        user.setEmail("testmailgmail.com");
+        user.setEmail("testmail@gmail.com");
         user.setCompanyId(company);
 
         ObjectMapper mapper = new ObjectMapper();
@@ -135,7 +135,7 @@ public class UserControllerTest {
 
         User user = new User();
         user.setName("TestUser");
-        user.setEmail("testmailgmail.com");
+        user.setEmail("testmail@gmail.com");
         user.setCompanyId(company);
 
         ObjectMapper mapper = new ObjectMapper();
@@ -158,7 +158,7 @@ public class UserControllerTest {
 
         User user = new User();
         user.setName("TestUser");
-        user.setEmail("testmailgmail.com");
+        user.setEmail("testmail@gmail.com");
         user.setCompanyId(company);
 
         List<User> usersByCompany = new ArrayList<>();
@@ -203,7 +203,7 @@ public class UserControllerTest {
         User user = new User();
         user.setId(1L);
         user.setName("TestUser");
-        user.setEmail("testmailgmail.com");
+        user.setEmail("testmail@gmail.com");
         user.setCompanyId(company);
 
         ObjectMapper mapper = new ObjectMapper();
@@ -227,7 +227,7 @@ public class UserControllerTest {
         User user = new User();
         user.setId(1L);
         user.setName("TestUser");
-        user.setEmail("testmailgmail.com");
+        user.setEmail("testmail@gmail.com");
         user.setCompanyId(company);
 
         ObjectMapper mapper = new ObjectMapper();
