@@ -27,6 +27,15 @@ public class UserController {
     @Autowired
     private CompanyRepository companyRepository;
 
+    /**
+     * GET /getAllUsers : Get all users from the connected database.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of users in
+     * the body, or with status 204 (NO CONTENT) if there are no users in
+     * database, or with status 500 (INTERNAL SERVER ERROR) if process failed
+     * to complete for any other reason.
+     *
+     */
     @GetMapping("/getAllUsers")
     public ResponseEntity<List<User>> getAllUsers() {
 
@@ -48,6 +57,14 @@ public class UserController {
         }
     }
 
+    /**
+     * POST /addUser : Add a user to the connected database.
+     *
+     * @return the ResponseEntity with status 200 (OK)if the user was added,
+     * or with status 500 (INTERNAL SERVER ERROR) if process failed
+     * to complete for any other reason.
+     *
+     */
     @PostMapping(value = "/addUser", consumes = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<String> createUser(@RequestBody User user) {
 
@@ -68,6 +85,16 @@ public class UserController {
         }
     }
 
+    /**
+     * DELETE /deleteUserById : Delete a user from the connected database
+     * based on ID.
+     *
+     * @param id the id of the user to be deleted
+     * @return the ResponseEntity with status 200 (OK) if the user was deleted,
+     * or with status 500 (INTERNAL SERVER ERROR) if process failed
+     * to complete for any other reason.
+     *
+     */
     @DeleteMapping(value = "/deleteUser/{userId}")
     public ResponseEntity<String> deleteUserById(@PathVariable("userId") Long id) {
 
@@ -84,6 +111,17 @@ public class UserController {
         }
     }
 
+    /**
+     * DELETE /getUsersByCompany : Retrieve all users matching a company id
+     * from the connected database.
+     *
+     * @param id the id of the company
+     * @return the ResponseEntity with status 200 (OK) and the list of users in
+     * the body, or with status 204 (NO CONTENT) if there are no users matching the criteria
+     * in the database, or with status 500 (INTERNAL SERVER ERROR) if process failed
+     * to complete for any other reason.
+     *
+     */
     @GetMapping("/getUsersByCompany/{companyId}")
     public ResponseEntity<List<User>> getUsersByCompany(@PathVariable("companyId") Long id) {
         logger.info("Attempting to retrieve users from database...");
@@ -104,6 +142,14 @@ public class UserController {
         }
     }
 
+    /**
+     * POST /addUser : Update a user from the connected database.
+     *
+     * @return the ResponseEntity with status 200 (OK)if the user was updated,
+     * or with status 500 (INTERNAL SERVER ERROR) if process failed
+     * to complete because user did not exist or for any other reason.
+     *
+     */
     @PutMapping(value = "/updateUser", consumes = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<String> updateUser(@RequestBody User user) {
 
