@@ -22,6 +22,8 @@ public class BootstrapData implements CommandLineRunner {
     }
 
 
+    //below method runs on application startup and is used to fill
+    //the db with some initial data
     @Override
     public void run(String... args) throws Exception {
 

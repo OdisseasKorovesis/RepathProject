@@ -4,6 +4,7 @@ import com.odkor.repathproject.models.Company;
 import com.odkor.repathproject.models.User;
 import com.odkor.repathproject.repositories.CompanyRepository;
 import com.odkor.repathproject.repositories.UserRepository;
+import com.odkor.repathproject.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +53,8 @@ public class UserController {
             logger.info("Attempt was successful, list of users was returned.");
             return new ResponseEntity<>(allUsers, HttpStatus.OK);
         } catch (Exception ex) {
-            logger.info("Attempt was unsuccessful.");
+            String exceptionString = Utils.getExceptionStackTrace(ex);
+            logger.info("Attempt was unsuccessful due to exception: " + exceptionString);
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -80,7 +82,8 @@ public class UserController {
             logger.info("Created user successfully.");
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception ex) {
-            logger.info("Could not create new user due to exception.");
+            String exceptionString = Utils.getExceptionStackTrace(ex);
+            logger.info("Could not create new user due to exception: " + exceptionString);
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -106,7 +109,8 @@ public class UserController {
             logger.info("User was deleted successfully.");
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception ex) {
-            logger.info("Could not delete user due to exception.");
+            String exceptionString = Utils.getExceptionStackTrace(ex);
+            logger.info("Could not delete user due to exception: " + exceptionString);
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -137,7 +141,8 @@ public class UserController {
             logger.info("Attempt was successful, list of users was returned.");
             return new ResponseEntity<>(users, HttpStatus.OK);
         } catch (Exception ex) {
-            logger.info("Attempt was unsuccessful.");
+            String exceptionString = Utils.getExceptionStackTrace(ex);
+            logger.info("Attempt was unsuccessful due to exception: " + exceptionString);
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -160,7 +165,7 @@ public class UserController {
 
             if(isNull(userRepository.findUserById(id))) {
                 logger.info("Selected user does not exist, update cannot continue.");
-                throw new Exception();
+                throw new Exception("User does not exist in DataBase.");
             }
 
             User updatedUser = new User();
@@ -174,7 +179,8 @@ public class UserController {
             logger.info("Updated user successfully.");
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception ex) {
-            logger.info("Could not create new user due to exception.");
+            String exceptionString = Utils.getExceptionStackTrace(ex);
+            logger.info("Could not create new user due to exception: \n" + exceptionString);
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
