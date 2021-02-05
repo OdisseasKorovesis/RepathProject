@@ -8,21 +8,9 @@
 	"item": [
 		{
 			"name": "GetAllUsers",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \r\n}\r\n",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
 					"raw": "http://localhost:8080/getAllUsers",
 					"protocol": "http",
@@ -60,10 +48,27 @@
 		{
 			"name": "SaveUser",
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"name\": \"Added User\",\r\n        \"email\": \"addeduser@gmail.com\",\r\n        \"companyId\": {\r\n            \"id\": 1,\r\n            \"name\": \"Repath\"\r\n        }\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": ""
+					"raw": "http://localhost:8080/addUser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"addUser"
+					]
 				}
 			},
 			"response": []
@@ -71,10 +76,19 @@
 		{
 			"name": "DeleteUser",
 			"request": {
-				"method": "GET",
+				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": ""
+					"raw": "http://localhost:8080/deleteUser/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"deleteUser",
+						"1"
+					]
 				}
 			},
 			"response": []
@@ -82,10 +96,27 @@
 		{
 			"name": "UpdateUser",
 			"request": {
-				"method": "GET",
+				"method": "PUT",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"id\": 2,\r\n        \"name\": \"Updated User\",\r\n        \"email\": \"updateduser@gmail.com\",\r\n        \"companyId\": {\r\n            \"id\": 1,\r\n            \"name\": \"Repath\"\r\n        }\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": ""
+					"raw": "http://localhost:8080/updateUser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"updateUser"
+					]
 				}
 			},
 			"response": []

@@ -1,9 +1,6 @@
 package com.odkor.repathproject.controllers;
 
-import com.odkor.repathproject.models.Company;
 import com.odkor.repathproject.models.User;
-import com.odkor.repathproject.repositories.CompanyRepository;
-import com.odkor.repathproject.repositories.UserRepository;
 import com.odkor.repathproject.services.UserService;
 import com.odkor.repathproject.utils.Utils;
 import org.slf4j.Logger;
@@ -68,7 +65,7 @@ public class UserController {
     @PostMapping(value = "/addUser", consumes = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<String> createUser(@RequestBody User user) {
 
-        logger.info("Attempting to create new user with info " + user.toString());
+        logger.info(String.format("Attempting to create new user with info %s",  user.toString()));
 
         try {
             User userToBeCreated = new User();
@@ -81,7 +78,7 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception ex) {
             String exceptionString = Utils.getExceptionStackTrace(ex);
-            logger.info("Could not create new user due to exception: " + exceptionString);
+            logger.info(String.format("Could not create new user due to exception: %s", exceptionString));
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -99,7 +96,7 @@ public class UserController {
     @DeleteMapping(value = "/deleteUser/{userId}")
     public ResponseEntity<String> deleteUserById(@PathVariable("userId") Long id) {
 
-        logger.info("Attempting to delete user with id " + id);
+        logger.info(String.format("Attempting to delete user with id %o", id));
 
         try {
 
@@ -114,7 +111,7 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception ex) {
             String exceptionString = Utils.getExceptionStackTrace(ex);
-            logger.info("Could not delete user due to exception: " + exceptionString);
+            logger.info(String.format("Could not delete user due to exception: %s", exceptionString));
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -132,7 +129,7 @@ public class UserController {
      */
     @GetMapping("/getUsersByCompany/{companyId}")
     public ResponseEntity<List<User>> getUsersByCompany(@PathVariable("companyId") Long id) {
-        logger.info("Attempting to retrieve users from database based ond company...");
+        logger.info("Attempting to retrieve users from database based on company...");
 
         try {
             List<User> users = (List<User>) userService.findUsersByCompany(id);
@@ -146,7 +143,7 @@ public class UserController {
             return new ResponseEntity<>(users, HttpStatus.OK);
         } catch (Exception ex) {
             String exceptionString = Utils.getExceptionStackTrace(ex);
-            logger.info("Attempt was unsuccessful due to exception: " + exceptionString);
+            logger.info(String.format("Could not retrieve users due to exception: %s", exceptionString));
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -163,7 +160,7 @@ public class UserController {
     public ResponseEntity<String> updateUser(@RequestBody User user) {
 
         Long id = user.getId();
-        logger.info("Attempting to update user with id " + id);
+        logger.info(String.format("Attempting to update user with id $o", id));
 
         try {
 
@@ -184,7 +181,7 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception ex) {
             String exceptionString = Utils.getExceptionStackTrace(ex);
-            logger.info("Could not create new user due to exception: \n" + exceptionString);
+            logger.info(String.format("Could not update user due to exception: %s", exceptionString));
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

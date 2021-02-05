@@ -4,9 +4,6 @@ import com.odkor.repathproject.models.Company;
 import com.odkor.repathproject.repositories.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class CompanyServiceImpl implements CompanyService {
 
     @Autowired

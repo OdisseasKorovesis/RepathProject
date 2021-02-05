@@ -1,9 +1,7 @@
 package com.odkor.repathproject.services;
 
 import com.odkor.repathproject.models.Company;
-import com.odkor.repathproject.models.User;
 import com.odkor.repathproject.repositories.CompanyRepository;
-import com.odkor.repathproject.repositories.UserRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
