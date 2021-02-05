@@ -4,6 +4,7 @@ import com.odkor.repathproject.models.Company;
 import com.odkor.repathproject.models.User;
 import com.odkor.repathproject.repositories.CompanyRepository;
 import com.odkor.repathproject.repositories.UserRepository;
+import com.odkor.repathproject.services.UserService;
 import com.odkor.repathproject.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,10 +24,7 @@ public class UserController {
     Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private CompanyRepository companyRepository;
+    private UserService userService;
 
     /**
      * GET /getAllUsers : Get all users from the connected database.
@@ -43,7 +41,7 @@ public class UserController {
         logger.info("Attempting to retrieve users from database...");
 
         try {
-            List<User> allUsers = (List<User>) userRepository.findAll();
+            List<User> allUsers = (List<User>) userService.findAllUsers();
 
             if(allUsers.isEmpty()) {
                 logger.info("Attempt was successful, but list of users was empty.");
@@ -77,7 +75,7 @@ public class UserController {
             userToBeCreated.setName(user.getName());
             userToBeCreated.setEmail(user.getEmail());
             userToBeCreated.setCompanyId(user.getCompanyId());
-            userRepository.save(userToBeCreated);
+            userService.saveUser(userToBeCreated);
 
             logger.info("Created user successfully.");
             return new ResponseEntity<>(HttpStatus.OK);
@@ -104,7 +102,13 @@ public class UserController {
         logger.info("Attempting to delete user with id " + id);
 
         try {
-            userRepository.deleteById(id);
+
+            if(isNull(userService.findUserById(id))) {
+                logger.info("Selected user does not exist, update cannot continue.");
+                throw new Exception("User does not exist in DataBase.");
+            }
+
+            userService.deleteUserById(id);;
 
             logger.info("User was deleted successfully.");
             return new ResponseEntity<>(HttpStatus.OK);
@@ -128,10 +132,10 @@ public class UserController {
      */
     @GetMapping("/getUsersByCompany/{companyId}")
     public ResponseEntity<List<User>> getUsersByCompany(@PathVariable("companyId") Long id) {
-        logger.info("Attempting to retrieve users from database...");
+        logger.info("Attempting to retrieve users from database based ond company...");
 
         try {
-            List<User> users = (List<User>) userRepository.findUsersByCompany(id);
+            List<User> users = (List<User>) userService.findUsersByCompany(id);
 
             if(users.isEmpty()) {
                 logger.info("Attempt was successful, but list of users was empty.");
@@ -159,11 +163,11 @@ public class UserController {
     public ResponseEntity<String> updateUser(@RequestBody User user) {
 
         Long id = user.getId();
-        logger.info("Attempting to update user with id " + user.getId());
+        logger.info("Attempting to update user with id " + id);
 
         try {
 
-            if(isNull(userRepository.findUserById(id))) {
+            if(isNull(userService.findUserById(id))) {
                 logger.info("Selected user does not exist, update cannot continue.");
                 throw new Exception("User does not exist in DataBase.");
             }
@@ -174,7 +178,7 @@ public class UserController {
             updatedUser.setEmail(user.getEmail());
             updatedUser.setCompanyId(user.getCompanyId());
 
-            userRepository.save(user);
+            userService.saveUser(user);
 
             logger.info("Updated user successfully.");
             return new ResponseEntity<>(HttpStatus.OK);

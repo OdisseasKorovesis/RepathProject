@@ -16,8 +16,4 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findUsersByCompany(Long companyId);
 
     User findUserById(Long id);
-
-//    @Transactional
-//    @Query(value = "UPDATE users SET name = ?1, email = ?2, company_id = ?3 WHERE id = ?4", nativeQuery = true)
-//    List<User> updateUser(String name, String email, Long companyId, Long id);
 }

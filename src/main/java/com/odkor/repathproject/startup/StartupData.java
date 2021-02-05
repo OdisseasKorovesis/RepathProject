@@ -1,4 +1,4 @@
-package com.odkor.repathproject.bootstrap;
+package com.odkor.repathproject.startup;
 
 import com.odkor.repathproject.models.Company;
 import com.odkor.repathproject.models.User;
@@ -10,13 +10,13 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
-public class BootstrapData implements CommandLineRunner {
+public class StartupData implements CommandLineRunner {
 
-    private Logger logger = LoggerFactory.getLogger(BootstrapData.class);
+    private Logger logger = LoggerFactory.getLogger(StartupData.class);
     private final UserRepository userRepository;
     private final CompanyRepository companyRepository;
 
-    public BootstrapData(UserRepository userRepository, CompanyRepository companyRepository) {
+    public StartupData(UserRepository userRepository, CompanyRepository companyRepository) {
         this.userRepository = userRepository;
         this.companyRepository = companyRepository;
     }

@@ -16,11 +16,4 @@ public class CompanyServiceImpl implements CompanyService {
     public void saveCompany(Company company) {
         companyRepository.save(company);
     }
-
-    @Override
-    public List<Company> findAllCompanies() {
-        List<Company> companies = new ArrayList<>();
-        companyRepository.findAll().forEach(companies::add);
-        return companies;
-    }
 }

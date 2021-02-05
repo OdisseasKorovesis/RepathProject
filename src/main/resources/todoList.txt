@@ -1,2 +1,6 @@
--add exception logging in try catch clauses
--check update
+-unit tests at least for controllers
+-comments wherever necessary
+-see about installation on other pcs
+-null checks and sanitization for input
+-remove uncessary files and fix git ignore
+-small UI implementation?
