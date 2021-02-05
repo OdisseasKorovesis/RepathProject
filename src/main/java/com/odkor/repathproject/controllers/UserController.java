@@ -68,7 +68,7 @@ public class UserController {
     @PostMapping(value = "/addUser", consumes = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<String> createUser(@RequestBody User user) {
 
-        logger.info("Attempting to create new user with info" + user.toString());
+        logger.info("Attempting to create new user with info " + user.toString());
 
         try {
             User userToBeCreated = new User();

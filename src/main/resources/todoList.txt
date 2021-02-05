@@ -1,4 +1,3 @@
--unit tests at least for controllers
 -comments wherever necessary
 -see about installation on other pcs
 -null checks and sanitization for input
