@@ -160,7 +160,7 @@ public class UserController {
     public ResponseEntity<String> updateUser(@RequestBody User user) {
 
         Long id = user.getId();
-        logger.info(String.format("Attempting to update user with id $o", id));
+        logger.info(String.format("Attempting to update user with id %o", id));
 
         try {
 
